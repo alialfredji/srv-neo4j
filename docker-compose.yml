@@ -1,0 +1,26 @@
+version: '3.4'
+services:
+
+    neo4j:
+        image: neo4j:4.1.1
+        ports:
+            - ${NEO_CONSOLE_PORT}:7474
+            - ${NEO_PORT}:7687
+        networks:
+            - production
+        volumes:
+            - ${HUMBLE_DATA}/neo4j/conf:/conf
+            - ${HUMBLE_DATA}/neo4j/data:/data
+            - ${HUMBLE_DATA}/neo4j/import:/import
+            - ${HUMBLE_DATA}/neo4j/logs:/logs
+            - ${HUMBLE_DATA}/neo4j/plugins:/plugins
+        environment:
+            NEO4J_AUTH: ${NEO_AUTH}
+        restart: always
+
+#
+# Networks definition
+#
+
+networks:
+    production:
