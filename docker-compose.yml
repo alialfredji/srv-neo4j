@@ -9,11 +9,11 @@ services:
         networks:
             - production
         volumes:
-            - ${HUMBLE_DATA}/neo4j/conf:/conf
             - ${HUMBLE_DATA}/neo4j/data:/data
             - ${HUMBLE_DATA}/neo4j/import:/import
             - ${HUMBLE_DATA}/neo4j/logs:/logs
-            - ${HUMBLE_DATA}/neo4j/plugins:/plugins
+            - ./plugins:/plugins
+            - ./conf:/conf
         environment:
             NEO4J_AUTH: ${NEO_AUTH}
         restart: always
